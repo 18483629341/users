@@ -13,6 +13,8 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 
 import { DataService} from "./services/data.service";
 
+import {HashLocationStrategy,LocationStrategy} from '@angular/common';
+
 const appRoutes:Routes=[
   {path:"",component:HomeComponent},
   {path:"user",component:UserComponent},
@@ -33,7 +35,7 @@ const appRoutes:Routes=[
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [DataService],
+  providers: [DataService,{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
